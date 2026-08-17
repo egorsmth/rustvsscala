@@ -1,0 +1,13 @@
+[package]
+name = "parquet-seaweed-reader"
+version = "0.1.0"
+edition = "2021"
+
+# NOTE: DataFusion 43 requires a modern Rust toolchain (MSRV ~1.79+).
+# The system `rustc 1.75` shipped with this box is too old; install a current
+# toolchain with rustup (see README) before `cargo run`.
+[dependencies]
+datafusion = "43"
+object_store = { version = "0.11", features = ["aws"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+url = "2"

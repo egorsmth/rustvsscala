@@ -1,0 +1,16 @@
+# Single-node SeaweedFS exposing an S3-compatible endpoint on :8333.
+# Any access/secret key is accepted by default (no auth config), so the apps'
+# S3_ACCESS_KEY / S3_SECRET_KEY can be any non-empty string.
+services:
+  seaweedfs:
+    image: chrislusf/seaweedfs:latest
+    command: "server -s3 -dir=/data"
+    ports:
+      - "8333:8333"   # S3 API
+      - "8888:8888"   # filer
+      - "9333:9333"   # master
+    volumes:
+      - seaweed-data:/data
+
+volumes:
+  seaweed-data:
